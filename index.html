@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Archivo+Black&family=Bagel+Fat+One&family=Bungee&family=Dancing+Script:wght@500&family=Foldit:wght@700&family=Geologica:wght@800&family=Kablammo&family=Kanit:ital,wght@1,300&family=Karla&family=Libre+Barcode+128+Text&family=Lilita+One&family=Luckiest+Guy&family=Manrope:wght@300&family=Miss+Fajardose&family=Nothing+You+Could+Do&family=Noto+Serif:ital,wght@1,200&family=Secular+One&family=Tilt+Warp&display=swap"
+        rel="stylesheet">
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="site_officiel/static/animate/animate.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Archivo+Black&family=Bagel+Fat+One&family=Bungee&family=Dancing+Script:wght@500&family=Foldit:wght@700&family=Geologica:wght@800&family=Kablammo&family=Kanit:ital,wght@1,300&family=Karla&family=Libre+Barcode+128+Text&family=Lilita+One&family=Luckiest+Guy&family=Manrope:wght@300&family=Miss+Fajardose&family=Nothing+You+Could+Do&family=Noto+Serif:ital,wght@1,200&family=Secular+One&family=Tilt+Warp&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="site_officiel/static/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="site_officiel/static/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="site_officiel/static/fontawesome-free-6.4.0-web/js/all.min.js">
+    <style>
+        #welcomeMessage {
+            left: 450px;
+            height: 40px;
+            top: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            font-family: 'accu' sans-serif;
+        }
+
+        #jeu {
+            left: 90px;
+            height: 40px;
+            top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            position: relative;
+            display: inline-block;
+            color: green;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #00bfff, #ffffff);
+            /* Dégradé de couleurs pour le fond */
+            transition: background 1s ease-in-out;
+            /* Transition de fond de 1 seconde avec une accélération et un ralentissement */
+
+        }
+
+        .game-content {
+            opacity: 0;
+            /* Masque le contenu du jeu */
+            transition: opacity 1s ease-in-out;
+            /* Transition d'opacité de 1 seconde avec une accélération et un ralentissement */
+        }
+
+        .game-content.show {
+            opacity: 1;
+            /* Affiche le contenu du jeu */
+        }
+
+        .joueur,
+        .ord {
+            text-align: center;
+        }
+    </style>
+    <title>Jeu_songo</title>
+</head>
+
+<body>
+
+
+    <div class="game-content">
+        <div id="jeu"><i
+                style="font-family: 'Bungee', cursive; font-size: 40px; text-shadow: 0px 2px black; color: rgb(110, 68, 25);">SONGO</i>
+        </div>
+
+        <!--mettre le bouton commencer ajuster le css-->
+        <div id="welcomeMessage" class="animate__animated animate__fadeInDown"
+            style="font-family: 'Merienda', cursive; font-size: 25px;">Bienvenue</div>
+        <div class="cadre1" style="margin-left: 16%;">
+            <div class="sous_cadr">
+                <button class="bouton1">5</button>
+                <button class="bouton2">5</button>
+                <button class="bouton3">5</button>
+                <button class="bouton4">5</button>
+                <button class="bouton5">5</button>
+                <button class="bouton6">5</button>
+                <button class="bouton7">5</button>
+            </div>
+            <div class="mil">
+                <button class="gain2">0</button>
+                <button class="milieu" id="startButton"><i
+                        style='color: rgb(236, 242, 236); font-weight: bold; font-size: 20px; background-color: rgba(204, 82, 21, 0.5); padding: 10px;'>AFRICA</i></button>
+                <button class="gain1"
+                    style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">0</button>
+            </div>
+            <div class="sous_cadr">
+                <button class="bouton14"
+                    style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+                <button class="bouton13"
+                    style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+                <button class="bouton12"
+                    style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+                <button class="bouton11"
+                    style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+                <button class="bouton10"
+                    style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+                <button class="bouton9"
+                    style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+                <button class="bouton8"
+                    style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+            </div>
+        </div>
+
+        <!-- <a href="J1_vs_J2.html" style="float: left;" target="_blank">Joueur vs joueur</a>
+			<a href="J_vs_COM.html" style="float: right;" target="_blank"><br> Jouer vs Ordinateur</a> -->
+        <p class="joueur" style="font-family: 'Roboto', sans-serif; font-size: 13px;"><a href="#"> Joueur contre Joueur
+            </a></p>
+        <p class="ord" style="font-family: 'Roboto', sans-serif; font-size: 13px;"><a href="#"> Joueur contre Ordinateur
+            </a></p>
+        <button class="cl" style="margin-left: 46%;"> Silencieux </button>
+    </div>
+
+    <audio id="gameSound" src="son.mp3" autoplay></audio>
+    <script>
+
+        window.addEventListener('load', function () {
+            // Au chargement de la page, ajoute la classe "show" pour afficher le contenu du jeu avec une transition fluide
+            document.querySelector('.game-content').classList.add('show');
+        });
+    </script>
+
+    <script>
+        function playBackgroundMusic() {
+            const backgroundMusic = document.getElementById('gameSound');
+            backgroundMusic.volume = 1; // Définissez le volume du son (entre 0 et 1)
+            backgroundMusic.play(); // Joue le son
+        }
+        document.addEventListener('DOMContentLoaded', playBackgroundMusic);
+    </script>
+    <!-- *********************************** ---enrgister---************************************************* -->
+    <!-- *********************************** ---enrgister---************************************************* -->
+    <!-- *********************************** ---enrgister---************************************************* -->
+
+    <script>
+        var welcomeMessage = document.getElementById('welcomeMessage');
+        var playername = prompt("Entrez votre nom :");
+        localStorage.setItem("playername", playername);
+        alert("Bienvenue, " + playername + " ! Prêt à commencer le jeu ?");
+
+        if (playername) {
+            // Convertir gain1 en nombre
+            var gain1 = localStorage.getItem("gain1");
+            var score = parseInt(gain1);
+
+
+            // Envoi de la requête AJAX au serveur
+
+            axios.post('/regist', { playername })
+                .then(response => {
+                    if (response.data.message1) {
+                        console.log(response.data.message1);
+
+                        welcomeMessage.innerHTML = 'Bon retour sur Songo, ' + playername + ' !';
+
+                    } else {
+                        console.log(response.data.message);
+
+                        welcomeMessage.innerHTML = 'Bienvenue dans Songo, ' + playername + ' !';
+
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur lors de l\'enregistrement du nom du joueur', error);
+                    // Gérer l'erreur (par exemple, afficher un message d'erreur à l'utilisateur)
+                });
+        }
+        else {
+
+            welcomeMessage.innerHTML = 'Bienvenue dans Songo, ' + playername + ' !';
+        }
+
+    </script>
+
+
+    <script>
+        var u = document.querySelector('.joueur');
+        var u1 = document.querySelector('.ord');
+        var f = document.querySelector('.cl');
+        var fenetre = '';
+        var fenetre1 = '';
+        var gameSound = document.getElementById('gameSound');
+        u.addEventListener('click', function () {
+            gameSound.pause();
+            fenetre = window.open('J1_vs_J2.html', '_blank', 'width=1500,height=600');
+
+        });
+
+        u1.addEventListener('click', function () {
+            gameSound.pause();
+            fenetre1 = window.open('J_vs_COM.html', '_blank', 'width=1500,height=600');
+
+        });
+
+        f.addEventListener('click', function () {
+            if (fenetre != null) {
+                gameSound.pause();
+                fenetre.close();
+            }
+            if (fenetre1 != null) {
+                gameSound.pause();
+                fenetre1.close();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <title>connexion</title>
+</head>
+<body>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 offset-md-3">
+
+            <div class="alert d-none" role="alert" id="turn-message"></div>
+
+            <div class="cart mb-3" id="user-card">
+                <div class="card-body">
+                    <form action="POST" id="form">
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label"> Nom d'utilisateur</label><br>
+                            <input type="text" class="form-conrol" name="" id="username" minlength="2" maxlength="80"
+                            placeholder="Saisir votre nom d'utilisateur" required>
+                        </div>
+
+                        <button class="btn btn-primary" id="start" type="submit">Creer un salon privee</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card mb-3 d-none" id="rooms-card">
+                <div class="card-header">Salons disponibles</div>
+                <ul class="list-group list-groupe-flush" id="rooms-list"></ul>
+            </div>
+            <div id="writing-area">
+                <div class="card mb-3 d-none">
+                    <div class="card-header">En attente d'un autre joueur</div>
+                    <div class="card-body mx-auto">
+                        <div class="spinner-border" role="status">
+                            <span class="visualy-hidden"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-bordy text-center">
+                        Partage ce lien pour inviter un autre joueur qui joura avec toi 
+                        <span id="link-to-share"></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="text-center d-none mt-2" id="restart-area">
+                <input id="restart" class="btn btn-primary" type="button" value="Rejouer">
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="ind.js"></script>
+</body>
+</html>

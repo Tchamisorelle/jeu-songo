@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @keyframes scaleAnimation {
+            0% {
+                transform: scale(1);
+                color: green;
+            }
+
+            20% {
+                transform: scale(1.4);
+                color: blue;
+
+            }
+
+            50% {
+                transform: scale(1);
+                color: red;
+            }
+        }
+
+        #animationDiv {
+            animation: scaleAnimation 2s infinite;
+            width: 200px;
+            height: 40px;
+            position: relative;
+            margin-left: 600px;
+            margin-top: 10px;
+        }
+
+        #animationDiv:hover {
+            color: rgb(197, 194, 26);
+        }
+
+        .control {
+            position: relative;
+            display: inline-block;
+            justify-content: center;
+            align-items: center;
+            left: 40%;
+            top: 80px;
+        }
+
+        .startButton {
+            position: relative;
+            right: 230px;
+            height: 40px;
+            width: 100px;
+            border-radius: 50px;
+            background-color: rgb(24, 71, 20);
+            box-shadow: 0px 0px 7px #46f143;
+            color: white;
+        }
+
+        #pauseButton {
+            position: relative;
+            left: 150px;
+            height: 40px;
+            width: 100px;
+            border-radius: 50px;
+            background-color: rgb(24, 71, 20);
+            color: white;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #00bfff, #ffffff);
+            /* Dégradé de couleurs pour le fond */
+            transition: background 1s ease-in-out;
+            /* Transition de fond de 1 seconde avec une accélération et un ralentissement */
+        }
+
+        .game-content {
+            opacity: 0;
+            /* Masque le contenu du jeu */
+            transition: opacity 1s ease-in-out;
+            /* Transition d'opacité de 1 seconde avec une accélération et un ralentissement */
+        }
+
+        .game-content.show {
+            opacity: 1;
+            /* Affiche le contenu du jeu */
+        }
+
+        button {
+            font-weight: bold;
+        }
+
+        .b {
+            padding: 10px 20px;
+            background-color: #3c2413;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            font-weight: 400;
+        }
+
+        button:hover {
+            background-color: rgb(253, 175, 51);
+        }
+
+        .b:hover {
+            background-color: #e27e36;
+        }
+
+        #pauseButton:hover {
+            background-color: rgb(6, 165, 16);
+        }
+
+        .startButton:hover {
+            background-color: rgb(25, 173, 42);
+        }
+
+        button:active {
+            background-color: #cc1c08;
+            box-shadow: none;
+        }
+
+        .b:active {
+            background-color: #7e4b1d;
+            box-shadow: none;
+        }
+
+        .b {
+            display: block;
+            margin: 2px;
+        }
+
+        /* incateur de direct*/
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="animationDiv">Jouer contre Ordinateur</div>
+    <div class="control">
+        <audio id="gameSound" src="bou.mp3"></audio>
+        <audio id="gameSoundd" src="puch.mp3"></audio>
+        <button id="pauseButton">Pause</button>
+        <div id="gameContainer"></div>
+        <div id="pauseOverlay">
+            <button id="playButton" class="startButton">Play</button>
+        </div>
+    </div>
+    <!-- indicateur de direction -->
+
+    <div class="game-container">
+        <div class="players">
+            <div class="player player1">Joueur 1</div>
+            <div class="arrow arrow-player1"></div>
+            <div class="player player2">Joueur 2</div>
+
+            <div class="arrow arrow-player2"></div>
+        </div>
+    </div>
+
+    <div class="bj">
+        <button id="saveButton" class="b">Enregistrer votre score</button>
+        <button id="log" class="b">Ancien score</button>
+        <button id="ferm" class="b">fermer</button>
+    </div>
+    <div class="regl">
+        <span class="j1">Joueur 2</span>
+        <span class="j2">Joueur 1</span>
+    </div>
+    <div class="cadre">
+        <div class="sous_cadr">
+            <button class="bouton1">5</button>
+            <button class="bouton2">5</button>
+            <button class="bouton3">5</button>
+            <button class="bouton4">5</button>
+            <button class="bouton5">5</button>
+            <button class="bouton6">5</button>
+            <button class="bouton7">5</button>
+        </div>
+
+        <div class="mil">
+            <button class="gain2">0</button>
+            <button class="milieu"><i
+                    style='color:  rgb(6, 7, 6); font-size: 20px; font-family: arial; font-weight: bold;  padding: 10px;'>SONGO</i></button>
+            <button class="gain1" style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">0</button>
+        </div>
+
+        <div class="sous_cadr" id="sous_cad">
+            <button class="bouton14" style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+            <button class="bouton13" style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+            <button class="bouton12" style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+            <button class="bouton11" style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+            <button class="bouton10" style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+            <button class="bouton9" style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+            <button class="bouton8" style="color: rgb(242, 132, 48);  font-size: 25px; text-shadow: 3px 1px black;">5</button>
+        </div>
+
+
+    </div>
+
+
+    <!-- #################################### animate the body ##############################-->
+    <!-- #################################### animate the body ##############################-->
+    <!-- #################################### animate the body ##############################-->
+    <script>
+        window.addEventListener('load', function () {
+            // Au chargement de la page, ajoute la classe "show" pour afficher le contenu du jeu avec une transition fluide
+            document.querySelector('.game-content').classList.add('show');
+        });
+
+    </script>
+
+    <!-- ###################################### bouton pause et demare ##############################-->
+    <script>
+        const pauseButton = document.getElementById('pauseButton');
+        const gameContainer = document.getElementById('gameContainer');
+        const pauseOverlay = document.getElementById('pauseOverlay');
+        const playButton = document.getElementById('playButton');
+
+        function handlePauseClick() {
+            gameContainer.classList.add('paused');
+            pauseOverlay.classList.add('paused');
+        }
+
+        function handlePlayClick() {
+            gameContainer.classList.remove('paused');
+            pauseOverlay.classList.remove('paused');
+        }
+
+        pauseButton.addEventListener('click', handlePauseClick);
+        playButton.addEventListener('click', handlePlayClick);
+
+    </script>
+
+    <!-- *********************************** ---save---************************************************* -->
+    <!-- *********************************** ---save---************************************************* -->
+    <!-- *********************************** ---save---************************************************* -->
+    <script>
+
+        document.getElementById('saveButton').addEventListener('click', function () {
+            // Vérifier si les valeurs sont présentes dans le localStorage
+            if (!localStorage.getItem("playername")) {
+                alert("Les données du joueur ne sont pas disponibles.");
+                return;
+            }
+
+            // Récupérer les valeurs du localStorage
+            var playername = localStorage.getItem("playername");
+            var gain1 = document.querySelector('.gain1').textContent;
+            var gain1 = localStorage.setItem("gain1", gain1);
+            var gain1 = localStorage.getItem("gain1");
+            
+            alert(gain1);
+
+            // Convertir gain1 en nombre
+            var score = parseInt(gain1);
+
+            // Envoi de la requête AJAX au serveur
+            axios.post('/save', { playername, score })
+                .then(response => {
+                    console.log(response.data.message);
+
+                    //***************** utiliser get pour recuperer les donnees de la base de donnee************************/////
+                    alert('success');
+
+                })
+                .catch(error => {
+                    console.error('Erreur lors de l\'enregistrement des données du joueur', error);
+                    // Gérer l'erreur (par exemple, afficher un message d'erreur à l'utilisateur)
+                });
+        });
+
+
+    </script>
+    <!--             ######################### quitter ################         -->
+    <script>
+        var sav = document.querySelector('#ferm');
+        var gameSound = document.getElementById('gameSound');
+
+        sav.addEventListener('click', function () {
+            gameSound.pause();
+            window.close();
+        })
+    </script>
+
+    <!-- *********************************** ---last score---************************************************* -->
+    <!-- *********************************** ---last score---************************************************* -->
+    <!-- *********************************** ---last score---************************************************* -->
+    <script>
+        document.getElementById('log').addEventListener('click', function () {
+            // Vérifier si les valeurs sont présentes dans le localStorage
+            if (!localStorage.getItem("playername")) {
+                alert("Les données du joueur ne sont pas disponibles.");
+                return;
+            }
+
+            // Récupérer les valeurs du localStorage
+            var playername = localStorage.getItem("playername");
+            var gain1 = localStorage.getItem("gain1");
+
+            axios.get(`/player/${playername}`)
+                .then(response => {
+                    const playerData = response.data;
+                    if (playerData.message) {
+                        console.log(playerData.message); // Afficher le message si le joueur n'a pas encore joué à cette partie
+                    } else {
+                        console.log('Nom du joueur:', playerData.playername);
+                        console.log('Score du joueur:', playerData.score);
+                        //player = document.getElementById('player');
+                        //player.innerHTML= `Nom du joueur: ${playerData.playername} <br>Score du joueur: ${playerData.score}`;
+                        messag = `Nom du joueur: ${playerData.playername} \nScore du joueur: ${playerData.score}`;
+                        // Utiliser les données du joueur dans ta page HTML ou ton application
+                        alert(messag);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la requête pour récupérer les données du joueur', error);
+                });
+        });
+
+    </script>
+
+    <script src="fonction.js"></script>
+
+</body>
+
+</html>

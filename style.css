@@ -1,0 +1,378 @@
+
+.cadre{
+    position: relative;
+    height: 360px;
+    width: 770px;
+    background: linear-gradient(to top, #8B4513, #D2B48C);
+    background-repeat: repeat;
+    background-position: bottom;
+    border-style: inset;
+    border-width: 13px;
+    border-color: rgb(65, 37, 3);
+    margin: 0px 0px 0px 0px;
+    left: 150px;
+    padding: 4px;
+    transform: translate(100px);
+    
+}
+.cadre1{
+    position: relative;
+    height: 360px;
+    width: 770px;
+    background: linear-gradient(to top, #8B4513, #D2B48C);
+    background-repeat: repeat;
+    background-position: bottom;
+    border-style: inset;
+    border-width: 13px;
+    border-color: rgb(65, 37, 3);
+    margin: 100px 150px 5px 150px;
+    padding: 4px;
+    transform: translate(100px);
+    
+}
+.bouton1,.bouton2,.bouton3,.bouton4,.bouton5,.bouton6,.bouton7,.bouton8,.bouton9,.bouton10,.bouton11,.bouton12,.bouton13,.bouton14{
+    position: relative;
+    display: inline-block;
+    height: 99px;
+    width: 90px;
+    margin: 1% 5px 5px 10px;
+    background: radial-gradient(circle at center, #35353563 5%, #201f1f69 50%);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.758);
+    background-repeat: repeat;
+    text-align: center;
+    color: rgb(244, 244, 254);
+    border-style: inset;
+    border-width: 15px;
+    border-color: #000000f0;
+    font-size: 20px;
+}
+.gain1{
+    position: relative;
+    height: 99px;
+    width: 267px;
+    display: inline-block;
+    margin: 2px 0px 2px 2px;
+    text-align: center;
+    background: linear-gradient(to top, #8b451380, #D2B48C);
+    font-size: 20px;
+    background-position: bottom;
+    background-repeat: repeat;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    color: rgb(244, 244, 254);
+    border-style: inset;
+    border-width: 28px;
+    border-color: #452916ed;
+}
+.gain2{
+    position: relative;
+    height: 99px;
+    width: 267px;
+    display: inline-block;
+    margin: 2px 2px 2px 7px;
+    flex: right;
+    text-align: center; 
+    background: linear-gradient(to top, #8b451380, #D2B48C);
+    font-size: 20px;
+    background-position: bottom;
+    background-repeat: repeat;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    color: rgb(244, 244, 254);
+    border-style: inset;
+    border-width: 28px;
+    border-color: #452916ed;
+}   
+.mil{
+    position: relative;
+    width: 98%;
+    height: 32%;
+    display: inline-block;
+    margin: 4px;
+}
+.milieu{
+    
+    border-style: inset;
+    border-width: 15px;
+    border-color: #000000f0;
+    position: relative;
+    height: 99px;   
+    width: 180px;
+    margin: 10px;
+    display: inline-block;
+    background: linear-gradient(45deg, rgba(65, 37, 3, 0.558) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(65, 37, 3, 0.595) 75%, transparent 75%);
+    background-size: 20px 20px;
+    background-repeat: repeat;
+}
+.sous_cadr{
+    position: relative;
+    width: 99%;
+    height: 110px;
+    background-color: rgba(44, 25, 1, 0.396);
+    display: inline-block;
+    margin: 4px;
+}
+p>a{
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(15, 146, 15);
+    font-weight: 900;
+    padding-right: 40%;
+    padding-left: 40%;
+    top: 30px;
+    position: relative;
+    border: 3px solid #8B4513;
+    
+}
+p>a:hover{
+    color: rgb(240, 240, 251);
+    background-color: #3c2413;
+    padding-right: 40%;
+    padding-left: 40%;
+}
+.cl{
+    margin-right: 40%;
+    margin-left: 40%;
+    /*  margin-bottom: 40%; */
+    margin-top: 40px;
+    font-weight: 700;
+    font-size: 20px;
+    position: relative;
+    text-align:center;
+    height: 35px;
+    width: 155px;
+    color: rgb(244, 244, 254);
+    background-color: #3c2413;
+    border-radius: 23px;
+}
+
+/* ############### incateur direction ######### */
+/* ############### incateur direction ######### */
+/* ############### incateur direction ######### */
+.game-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    float: right;
+    top: 250px;
+  }
+  
+  .arrow {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .arrow-player1 {
+    top: 30%;
+    transform: translateX(500%) rotate(180deg);
+  }
+  
+  .arrow-player2 {
+    top: 30%;
+    transform: translateX(-0%) rotate(-180deg);
+  }
+  
+  .players {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 300px;
+    height: 300px;
+  }
+  
+  .player {
+    font-weight: bold;
+  }
+  
+  .player1 {
+    color: blue;
+
+  }
+  
+  .player2 {
+    color: green;
+  }
+  
+.regl{
+    display: block;
+}
+
+
+  #gameContainer {
+    filter: blur(3px);
+    pointer-events: none;
+  }
+  
+  #gameContainer.paused {
+    filter: blur(0);
+    pointer-events: auto;
+  }
+  
+  #pauseOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.662);
+    z-index: 9999;
+    animation: heartbeat 2s infinite;
+  }
+  
+  #pauseOverlay.paused {
+    display: block;
+  }
+  
+  #pauseOverlay button {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+@keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+@keyframes heartbeat1 {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+.j1{
+    position: relative;
+    float: right;
+    height: 20px;
+    text-align: 20px;
+    right: 20px;
+    top: 60px;
+    animation: heartbeat1 2s infinite;
+    color: red;
+    font-weight: bold;
+    font-size: 10px;
+}
+.j2{
+  position: relative;
+    float: right;
+    height: 20px;
+    text-align: 20px;
+    top: 300px;
+    left: 30px;
+    animation: heartbeat1 2s infinite;
+    color: red;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+
+
+
+
+
+
+/* salle jeu */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+#roomCreation {
+  margin-bottom: 20px;
+}
+
+#roomCreation input[type="text"] {
+  width: 200px;
+  padding: 5px;
+}
+
+#roomCreation button {
+  padding: 5px 10px;
+}
+
+#roomListItems {
+  list-style-type: none;
+  padding: 0;
+}
+
+#roomListItems li {
+  margin-bottom: 10px;
+}
+
+/* CSS */
+.modal {
+  display: none;
+  /* styles pour afficher la boîte de dialogue modale */
+}
+
+.container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+div>h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form >button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form>button:hover {
+  background-color: #45a049;
+}
+
+
+
+
+
+
+
